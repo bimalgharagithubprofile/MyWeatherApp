@@ -34,7 +34,82 @@ Also, Will can see the selected `City Name` and Current `Time` and which `Day of
 ```
 Feels Like in Celcius
 Humidity
-Icon (Rain -> d,n | Cloud -> d,n | Sunny -> d)
+Weather (Rain -> d,n | Cloud -> d,n | Sunny -> d)
 Temperature
 Wind Speed
 ```
+All the `Background & Icons` will be showing according to the weather `Rain` `Cloudy` `Sunny`
+
+# Technical Info
+
+## UI/UX
+
+App is implemented with a quite simiply UX with minimal Buttons.
+
+Fully flat hierarchy UI designinig
+
+Apps supports all kind if `Mobile` and `Tablet` resolution(s) and for both `Orientation` -> `portrait` and `landscape`
+
+All Icons are `vetcor` no blurry issues
+
+Swipe LEFT | RIGHT operations
+
+Only Light theme supported as of now.
+
+```
+CoordinatorLayout used for CollapsingToolbarLayout
+ConstraintLayout is been used for evey kind of designing for all the screens
+Following modern Material Color config principles
+Custom Drawable for Gradient-Shadow and more
+Different layout files for portrait, landscape, mobile, tablet
+```
+
+## Architecture Pattern
+
+App is having `MVVM` Architecture pattern to keep thing `testable` as this is `loosly-coupled`
+
+## Design Pattern
+
+App is fully reactive using `RxJava -> Observer` Class from `androidx - lifecycle`
+
+## Language
+
+`Kotlin` used with many of its features
+```
+Coroutines
+suspend Funcions
+Generic Functions to wrap network response, etc..
+Extenstion function
+Delegates Functions like lazyDeferred -> LAZY operations wrapper
+object file for helper Functions
+Data Class
+Enum Class
+Each and everywhere null check
+```
+
+## DI
+
+App having `kodein` dependency injection jitpack
+
+## Jitpack
+
+App using `androidx`
+```
+databinding
+groupie
+enhancedAdapter
+retrofit
+```
+
+## gradle plugins
+
+All plugins are organised in a separate file call `dependencies.gradle`
+
+## Database
+
+Sharedpreferences
+
+## Network Call
+
+`retrofit` with FULL BODY Logger
+Network Callback is werapped with generic type fuinction to handle `Success` `Network Error` `Failure` wrapped with ENUM Class returns
