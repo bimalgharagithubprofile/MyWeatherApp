@@ -26,4 +26,15 @@ Click on `Help button` it will open a website where you can find how to use this
 
 App will get `5 days of forecast` of the selected City by using it's Lat, Lon values. `Tap` on City from the list of cities and it will open a `Fragment` with 5 days forecast.
 
-Here,
+Here, You will see 5 days from now and `by default today's weather details` will be shown. You can `select any day` from the list to see that day's weather forecast.
+
+Also, Will can see the selected `City Name` and Current `Time` and which `Day of Week`
+
+### Weather Details Shown
+```
+Feels Like in Celcius
+Humidity
+Icon (Rain -> d,n | Cloud -> d,n | Sunny -> d)
+Temperature
+Wind Speed
+```
