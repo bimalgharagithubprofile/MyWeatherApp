@@ -48,13 +48,13 @@ App is implemented with a quite simiply UX with minimal Buttons.
 
 Fully flat hierarchy UI designinig
 
-Apps supports all kind if `Mobile` and `Tablet` resolution(s) and for both `Orientation` -> `portrait` and `landscape`
+Apps supports all kind if `Mobile` and `Tablet` resolution(s) and for both `Orientation` -> `portrait` `landscape`
 
-All Icons are `vetcor` no blurry issues
+All Icons are `vetcor`, No blurry issues
 
 Swipe LEFT | RIGHT operations
 
-Only Light theme supported as of now.
+Only Light/Day theme supported as of now.
 
 ```
 CoordinatorLayout used for CollapsingToolbarLayout
