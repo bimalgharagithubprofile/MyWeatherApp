@@ -23,7 +23,7 @@ class DayItem(
         viewBinding.vDay.text = CommonUtils.getDayName(dataSet.dt_txt)
 
         //temperature
-        viewBinding.vHigh.text = ("High:  ${dataSet.main.feels_like.toInt()}" + 0x00B0.toChar())
+        viewBinding.vHigh.text = ("High:  ${dataSet.main.temp_max.toInt()}" + 0x00B0.toChar())
         viewBinding.vLow.text = ("Low:  ${dataSet.main.temp_min.toInt()}" + 0x00B0.toChar())
 
         //icon based on weather
