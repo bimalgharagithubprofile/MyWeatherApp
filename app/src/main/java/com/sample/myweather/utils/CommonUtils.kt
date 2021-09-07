@@ -8,7 +8,7 @@ class CommonUtils {
     companion object{
         const val BASE_URL = "http://api.openweathermap.org/data/2.5/"
         const val APPID = "fae7190d7e6433ec3a45285ffcf55c86"
-        const val HELP_WEBSITE_LINK = "https://github.com/bimalgharagithubprofile/MyWeatherApp/blob/main/README.md"//randomly taken from google vlog
+        const val HELP_WEBSITE_LINK = "https://github.com/bimalgharagithubprofile/MyWeatherApp/blob/main/README.md"
 
         private var instance: CommonUtils? = null
         fun getInstance(): CommonUtils? {
