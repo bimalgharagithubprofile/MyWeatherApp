@@ -20,7 +20,7 @@ class DayItem(
     override fun bind(viewBinding: ItemDayBinding, position: Int) {
 
         //name of the day
-        viewBinding.vDay.text = CommonUtils.getDayName(dataSet.dt_txt)
+        viewBinding.vDay.text = CommonUtils.getInstance()?.getDayName(dataSet.dt_txt)
 
         //temperature
         viewBinding.vHigh.text = ("High:  ${dataSet.main.temp_max.toInt()}" + 0x00B0.toChar())

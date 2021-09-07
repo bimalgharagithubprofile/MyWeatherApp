@@ -13,13 +13,10 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.android.gms.common.util.DeviceProperties.isTablet
 import com.sample.myweather.R
 import com.sample.myweather.data.network.response.forecasts.Day
 import com.sample.myweather.data.network.response.forecasts.ResponseForecast
 import com.sample.myweather.utils.CommonUtils
-import com.sample.myweather.utils.CommonUtils.Companion.getCurrentDateTime
-import com.sample.myweather.utils.CommonUtils.Companion.getLocationFromCity
 import com.sample.myweather.utils.Coroutines
 import com.sample.myweather.utils.ProgressStatus
 import com.sample.myweather.utils.log
@@ -117,11 +114,11 @@ class WeatherFragment : Fragment(), KodeinAware {
     private fun displayValues() {
         val day = responseForecast.list[selectedDay]
 
-        vCity.text = CommonUtils.getCityNameFromCity(selectedCity)
+        vCity.text = CommonUtils.getInstance()?.getCityNameFromCity(selectedCity)
 
-        vTime.text = getCurrentDateTime("hh:mm a")
+        vTime.text = CommonUtils.getInstance()?.getCurrentDateTime("hh:mm a")
 
-        vDayName.text = CommonUtils.getDayName(day.dt_txt)
+        vDayName.text = CommonUtils.getInstance()?.getDayName(day.dt_txt)
 
         vFeelsLike.text = ("${day.main.feels_like.toInt()}" + 0x00B0.toChar())
 
@@ -236,9 +233,9 @@ class WeatherFragment : Fragment(), KodeinAware {
 
         progressStatus.postValue(ProgressStatus.LOADING)
 
-        val locationOfCity = getLocationFromCity(selectedCity)
-        viewModel.lat = locationOfCity.latitude
-        viewModel.lon = locationOfCity.longitude
+        val locationOfCity = CommonUtils.getInstance()?.getLocationFromCity(selectedCity)
+        viewModel.lat = locationOfCity?.latitude
+        viewModel.lon = locationOfCity?.longitude
 
         viewModel.getForecasts()
     }

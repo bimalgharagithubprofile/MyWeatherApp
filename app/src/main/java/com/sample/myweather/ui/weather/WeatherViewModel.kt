@@ -42,6 +42,8 @@ class WeatherViewModel(
                         networkError.postValue("${response.errorCode}\n${response.errorBody}")
                 }
             }
+        } else {
+            networkError.postValue("Invalid address !")
         }
     }
 }

@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.github.mrbean355.android.EnhancedAdapter
 import com.sample.myweather.R
-import com.sample.myweather.utils.CommonUtils.Companion.getCityNameFromCity
+import com.sample.myweather.utils.CommonUtils
 
 private const val MAX_SELECTIONS = 1
 
@@ -34,7 +34,7 @@ class CityAdapter(private val context: Context, private val bookmark: Boolean) :
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val dataSet = getItemAt(position)
 
-        holder.vCity.text = getCityNameFromCity(dataSet)
+        holder.vCity.text = CommonUtils.getInstance()?.getCityNameFromCity(dataSet)
 
         if(bookmark){
             holder.bookmarkIcon.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.bookmark_minus_24))
