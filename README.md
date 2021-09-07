@@ -74,6 +74,8 @@ App is having `MVVM` Architecture pattern to keep thing `testable` as this is `l
 
 App is fully reactive using `RxJava -> Observer` Class from `androidx - lifecycle`
 
+No static fun - No memroy blockage, used `Singleton Design Pattern` for helper funtions
+
 ## Language
 
 `Kotlin` used with many of its features
