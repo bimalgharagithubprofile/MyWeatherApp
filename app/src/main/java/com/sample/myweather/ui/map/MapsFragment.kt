@@ -105,7 +105,7 @@ class MapsFragment : Fragment() {
             val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?
             mapFragment?.getMapAsync(callback)
 
-            geocoder = Geocoder(cntx, Locale.getDefault())
+            geocoder = Geocoder(cntx, Locale.US)
 
 
             btn_done.setOnClickListener {

@@ -54,6 +54,8 @@ All Icons are `vetcor`, No blurry issues
 
 Swipe LEFT | RIGHT operations
 
+Collapsing Toolbar
+
 Only Light/Day theme supported as of now.
 
 ```
