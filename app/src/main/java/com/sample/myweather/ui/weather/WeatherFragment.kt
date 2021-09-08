@@ -86,7 +86,7 @@ class WeatherFragment : Fragment(), KodeinAware {
         }
 
         //listen forecast result
-        viewModel.resultForecast.observe(this, Observer { response ->
+        viewModel.resultForecast.observe(viewLifecycleOwner, Observer { response ->
             Log.d("chk", "Observed forecast result $response")
 
             responseForecast = response
@@ -104,7 +104,7 @@ class WeatherFragment : Fragment(), KodeinAware {
             progressStatus.postValue(ProgressStatus.COMPLETED)
         })
         //listen for api errors
-        viewModel.networkError.observe(this, Observer { errorMessage ->
+        viewModel.networkError.observe(viewLifecycleOwner, Observer { errorMessage ->
             Toast.makeText(context, errorMessage, Toast.LENGTH_SHORT).show()
             progressStatus.postValue(ProgressStatus.COMPLETED)
             dismissFragment.postValue(true)

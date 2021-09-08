@@ -71,13 +71,13 @@ class CitiesFragment : Fragment(), KodeinAware,
 
         initData()
 
-        viewModel.listenerBookmarkADD.observe(this, Observer {
+        viewModel.listenerBookmarkADD.observe(viewLifecycleOwner, Observer {
             if (it)
                 Toast.makeText(context, "Successfully Bookmarked", Toast.LENGTH_SHORT).show()
             else
                 Toast.makeText(context, "Already Bookmarked !", Toast.LENGTH_SHORT).show()
         })
-        viewModel.listenerBookmarkREMOVE.observe(this, Observer { map ->
+        viewModel.listenerBookmarkREMOVE.observe(viewLifecycleOwner, Observer { map ->
             val entry = map.iterator().next()
             if (entry.value) {
                 dataSet.removeAt(entry.key)
@@ -87,7 +87,7 @@ class CitiesFragment : Fragment(), KodeinAware,
             } else
                 Toast.makeText(context, "Failed !", Toast.LENGTH_SHORT).show()
         })
-        viewModel.listenerRemove.observe(this, Observer { map ->
+        viewModel.listenerRemove.observe(viewLifecycleOwner, Observer { map ->
             val entry = map.iterator().next()
             if (entry.value) {
                 dataSet.removeAt(entry.key)
@@ -102,7 +102,7 @@ class CitiesFragment : Fragment(), KodeinAware,
     private fun initData() = Coroutines.main {
         progressStatus.postValue(ProgressStatus.LOADING)
         if(bookmark)
-            viewModel.bookmarkCitiesData.await().observe(this, Observer {
+            viewModel.bookmarkCitiesData.await().observe(viewLifecycleOwner, Observer {
                 log("All city list: $it")
 
                 if (it.isEmpty()) {
@@ -114,7 +114,7 @@ class CitiesFragment : Fragment(), KodeinAware,
                 }
             })
         else
-            viewModel.citiesData.await().observe(this, Observer {
+            viewModel.citiesData.await().observe(viewLifecycleOwner, Observer {
                 log("Bookmark city list: $it")
                 dataSet.addAll(it)
                 initRecyclerView()
