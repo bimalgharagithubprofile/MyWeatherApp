@@ -1,19 +1,39 @@
 package com.sample.myweather.utils
 
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
+import androidx.lifecycle.LifecycleCoroutineScope
+import kotlinx.coroutines.*
 
 object Coroutines {
 
-    fun main(work: suspend (() -> Unit)) =
+    //MAIN
+    fun main(scope: GlobalScope, work: suspend ((CoroutineScope) -> Unit)) =
         CoroutineScope(Dispatchers.Main).launch {
-            work()
+            work(this)
+        }
+    fun main(scope: LifecycleCoroutineScope, work: suspend ((CoroutineScope) -> Unit)) =
+        CoroutineScope(Dispatchers.Main).launch {
+            work(this)
+        }
+    fun main(scope: CoroutineScope, work: suspend ((CoroutineScope) -> Unit)) =
+        CoroutineScope(Dispatchers.Main).launch {
+            work(this)
         }
 
-    fun io(work: suspend (() -> Unit)) =
-        CoroutineScope(Dispatchers.IO).launch {
-            work()
+    // IO
+    fun io(scope: GlobalScope, work: suspend (CoroutineScope) -> Unit) {
+        scope.launch(Dispatchers.IO) {
+            work.invoke(this)
         }
+    }
+    fun io(scope: LifecycleCoroutineScope, work: suspend (Boolean) -> Unit) {
+        scope.launch(Dispatchers.IO) {
+            work.invoke(isActive)
+        }
+    }
+    fun io(scope: CoroutineScope, work: suspend (CoroutineScope) -> Unit) {
+        scope.launch(Dispatchers.IO) {
+            work.invoke(this)
+        }
+    }
 
 }

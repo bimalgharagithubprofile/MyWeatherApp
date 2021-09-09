@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.sample.myweather.R
 import com.sample.myweather.data.network.response.forecasts.Day
@@ -228,7 +229,7 @@ class WeatherFragment : Fragment(), KodeinAware {
         }
     }
 
-    private fun getForecasts() = Coroutines.io {
+    private fun getForecasts() {
         log("get forecast of $selectedCity")
 
         progressStatus.postValue(ProgressStatus.LOADING)

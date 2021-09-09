@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -99,7 +100,7 @@ class CitiesFragment : Fragment(), KodeinAware,
         })
     }
 
-    private fun initData() = Coroutines.main {
+    private fun initData() = Coroutines.main(lifecycleScope) {
         progressStatus.postValue(ProgressStatus.LOADING)
         if(bookmark)
             viewModel.bookmarkCitiesData.await().observe(viewLifecycleOwner, Observer {

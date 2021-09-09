@@ -3,9 +3,11 @@ package com.sample.myweather.ui.weather
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.sample.myweather.data.network.configuration.NetworkResource
 import com.sample.myweather.data.network.response.forecasts.ResponseForecast
 import com.sample.myweather.data.repositories.WeatherRepository
+import com.sample.myweather.utils.Coroutines
 import com.sample.myweather.utils.log
 
 class WeatherViewModel(
@@ -21,8 +23,8 @@ class WeatherViewModel(
 
 
 
-    suspend fun getForecasts() {
-        if(lat!=null && lon != null) {
+    fun getForecasts() = Coroutines.io(viewModelScope) {
+    if(lat!=null && lon != null) {
             val response = repository.getForecasts(lat!!, lon!!, units)
             Log.d("chk", "callback: $response")
 
